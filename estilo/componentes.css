@@ -1,0 +1,331 @@
+/* ==========================================
+   FARMASTUDY - COMPONENTES REUTILIZABLES
+   ========================================== */
+
+/* ===== MENÚ LATERAL ===== */
+.menu {
+  width: var(--ancho-menu);
+  min-width: var(--ancho-menu);
+  background: var(--verde-oscuro);
+  color: var(--blanco);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  transition: width 0.2s, min-width 0.2s;
+  flex-shrink: 0;
+}
+
+.menu__grupo {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.menu__etiqueta {
+  display: block;
+  padding: 6px 16px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+}
+
+.menu__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 16px;
+  background: none;
+  border: none;
+  border-left: 3px solid transparent;
+  color: rgba(255,255,255,0.75);
+  font-family: var(--fuente);
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: all 0.12s;
+  text-align: left;
+}
+
+.menu__item:hover {
+  background: rgba(255,255,255,0.08);
+  color: var(--blanco);
+}
+
+.menu__item--activo {
+  background: rgba(255,255,255,0.12);
+  border-left-color: var(--blanco);
+  color: var(--blanco);
+  font-weight: 600;
+}
+
+.menu__icono {
+  font-size: 16px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* ===== BOTONES ===== */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  font-family: var(--fuente);
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid var(--gris-borde);
+  border-radius: 6px;
+  background: var(--blanco);
+  color: var(--texto);
+  cursor: pointer;
+  transition: all 0.12s;
+  white-space: nowrap;
+}
+
+.boton:hover {
+  background: #f0f0f0;
+  border-color: #c0c0c0;
+}
+
+.boton--primario {
+  background: var(--verde);
+  color: var(--blanco);
+  border-color: var(--verde-oscuro);
+}
+
+.boton--primario:hover {
+  background: var(--verde-oscuro);
+}
+
+.boton--pequeno {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.boton--icono {
+  padding: 5px 8px;
+}
+
+/* ===== TARJETAS ===== */
+.tarjeta {
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: 8px;
+  box-shadow: var(--sombra);
+  transition: box-shadow 0.15s;
+}
+
+.tarjeta:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.tarjeta__cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--gris-borde);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.tarjeta__cuerpo {
+  padding: 14px;
+}
+
+/* ===== BADGES / ETIQUETAS ===== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.badge--verde { background: var(--verde-fondo); color: var(--verde-oscuro); }
+.badge--azul { background: #e1f5fe; color: #01579b; }
+.badge--rojo { background: #fce4ec; color: #b71c1c; }
+.badge--ambar { background: #fff3e0; color: #e65100; }
+.badge--gris { background: #f0f0f0; color: var(--gris-texto); }
+
+/* ===== BUSCADOR ===== */
+.buscador {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: 8px;
+  padding: 8px 14px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.buscador:focus-within {
+  border-color: var(--verde);
+  box-shadow: 0 0 0 3px rgba(0,105,92,0.12);
+}
+
+.buscador__input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: var(--fuente);
+  font-size: 14px;
+  background: transparent;
+  color: var(--texto);
+}
+
+.buscador__input::placeholder {
+  color: #aaa;
+}
+
+/* ===== TABLA ===== */
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.tabla th {
+  background: #f8f8f8;
+  color: var(--gris-texto);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--gris-borde);
+}
+
+.tabla td {
+  padding: 7px 12px;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+
+.tabla tr:hover td {
+  background: #f5faf9;
+}
+
+.tabla tr:last-child td {
+  border-bottom: none;
+}
+
+/* ===== CAMPO FORMULARIO ===== */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.campo__etiqueta {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gris-texto);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.campo__valor {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ===== MODAL NOTIFICACIÓN ===== */
+.notificacion {
+  position: fixed;
+  bottom: 44px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--texto);
+  color: var(--blanco);
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  z-index: 500;
+  animation: aparecer 0.2s ease;
+}
+
+/* ===== MIGAS DE PAN ===== */
+.migas {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--gris-texto);
+  flex-wrap: wrap;
+}
+
+.migas__item {
+  color: var(--verde);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.migas__item:hover {
+  text-decoration: underline;
+}
+
+.migas__item--actual {
+  color: var(--texto);
+  cursor: default;
+  font-weight: 600;
+}
+
+.migas__item--actual:hover {
+  text-decoration: none;
+}
+
+.migas__sep {
+  color: #bbb;
+  font-size: 10px;
+}
+
+/* ===== GRILLA ===== */
+.grilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+/* ===== TRAMO ===== */
+.tramo {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.tramo__label {
+  font-size: 12px;
+  color: var(--gris-texto);
+  min-width: 120px;
+  font-weight: 500;
+}
+
+.tramo__valor {
+  font-size: 13px;
+}
+
+/* ===== SECCIÓN TÍTULO ===== */
+.seccion-titulo {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--texto);
+  margin-bottom: 4px;
+}
+
+.seccion-subtitulo {
+  font-size: 13px;
+  color: var(--gris-texto);
+  margin-bottom: 16px;
+}

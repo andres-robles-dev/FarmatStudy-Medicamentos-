@@ -1,0 +1,278 @@
+/* ==========================================
+   FARMASTUDY - EXPLORADOR ATC
+   ========================================== */
+
+.explorador {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+
+.explorador__panel {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 12px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Árbol ATC */
+.explorador__arbol {
+  overflow-y: auto;
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: 8px;
+  padding: 8px 0;
+}
+
+.nodo-atc {
+  cursor: pointer;
+}
+
+.nodo-atc__cabecera {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: 12.5px;
+  border-radius: 4px;
+  transition: background 0.1s;
+  margin: 1px 4px;
+}
+
+.nodo-atc__cabecera:hover {
+  background: var(--verde-fondo);
+}
+
+.nodo-atc__cabecera--activo {
+  background: var(--verde-fondo);
+  font-weight: 600;
+  color: var(--verde-oscuro);
+}
+
+.nodo-atc__toggle {
+  width: 16px;
+  text-align: center;
+  font-size: 10px;
+  color: var(--gris-texto);
+  flex-shrink: 0;
+}
+
+.nodo-atc__codigo {
+  font-family: 'Consolas', monospace;
+  font-size: 11px;
+  color: var(--gris-texto);
+  background: #f0f0f0;
+  padding: 0 5px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.nodo-atc__nombre {
+  flex: 1;
+}
+
+.nodo-atc__contador {
+  font-size: 11px;
+  color: var(--gris-texto);
+  background: #f0f0f0;
+  padding: 0 7px;
+  border-radius: 8px;
+}
+
+.nodo-atc__hijos {
+  display: none;
+  padding-left: 16px;
+}
+
+.nodo-atc--abierto > .nodo-atc__hijos {
+  display: block;
+}
+
+/* Lista de medicamentos */
+.explorador__lista {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+.explorador__info {
+  font-size: 13px;
+  color: var(--gris-texto);
+  padding: 4px 0;
+}
+
+.explorador__resultados {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Tarjeta de medicamento en lista */
+.med-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.12s;
+  animation: aparecer 0.2s ease;
+}
+
+.med-card:hover {
+  border-color: var(--verde);
+  box-shadow: 0 2px 8px rgba(0,105,92,0.1);
+}
+
+.med-card__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.med-card__nombre {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--texto);
+}
+
+.med-card__detalle {
+  font-size: 12px;
+  color: var(--gris-texto);
+  margin-top: 2px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.med-card__badges {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+/* ===== FICHA DETALLE ===== */
+.ficha {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.ficha__cabecera {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.ficha__icono {
+  font-size: 36px;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--verde-fondo);
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.ficha__titulos {
+  flex: 1;
+}
+
+.ficha__nombre {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.ficha__principio {
+  font-size: 15px;
+  color: var(--gris-texto);
+  margin-top: 2px;
+}
+
+.ficha__badges {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.ficha__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.ficha__campo {
+  padding: 10px 14px;
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: 8px;
+}
+
+.ficha__campo--ancho {
+  grid-column: 1 / -1;
+}
+
+.ficha__campo-etiqueta {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--gris-texto);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.ficha__campo-valor {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.ficha__marcas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.ficha__marca {
+  padding: 4px 10px;
+  background: var(--verde-fondo);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--verde-oscuro);
+}
+
+.ficha__atc-trace {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: 8px;
+}
+
+.ficha__atc-nivel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--gris-texto);
+}
+
+.ficha__atc-nivel strong {
+  color: var(--texto);
+}
+
+.ficha__atc-nivel .badge {
+  min-width: 50px;
+  text-align: center;
+}

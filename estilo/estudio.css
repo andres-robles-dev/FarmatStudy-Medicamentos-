@@ -1,0 +1,350 @@
+/* ==========================================
+   FARMASTUDY - MODO ESTUDIO (FLASHCARDS + TEST)
+   ========================================== */
+
+/* ===== FLASHCARDS ===== */
+.flashcards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.flashcards__controles {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flashcards__contador {
+  font-size: 13px;
+  color: var(--gris-texto);
+  font-weight: 500;
+}
+
+.flashcards__progreso {
+  width: 100%;
+  height: 4px;
+  background: var(--gris-borde);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.flashcards__barra {
+  height: 100%;
+  background: var(--verde);
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+
+/* Tarjeta giratoria */
+.flashcard {
+  width: 100%;
+  min-height: 320px;
+  perspective: 1200px;
+  cursor: pointer;
+}
+
+.flashcard__interior {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flashcard--girada .flashcard__interior {
+  transform: rotateY(180deg);
+}
+
+.flashcard__cara {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+  text-align: center;
+}
+
+.flashcard__cara--atras {
+  transform: rotateY(180deg);
+  justify-content: flex-start;
+  padding-top: 40px;
+  gap: 12px;
+}
+
+.flashcard__cara--atras .flashcard__linea {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.flashcard__cara--atras .flashcard__label {
+  font-size: 11px;
+  color: var(--gris-texto);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.flashcard__cara--atras .flashcard__principio {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--verde);
+}
+
+.flashcard__pregunta {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.flashcard__ayuda {
+  font-size: 12px;
+  color: var(--gris-texto);
+}
+
+.flashcard__girar {
+  font-size: 13px;
+  color: var(--verde);
+  font-weight: 600;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ===== TEST ===== */
+.test {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.test__info {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  font-size: 13px;
+  color: var(--gris-texto);
+}
+
+.test__info span {
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.test__pregunta {
+  width: 100%;
+  padding: 24px;
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.test__opciones {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.test__opcion {
+  padding: 12px 16px;
+  background: var(--blanco);
+  border: 2px solid var(--gris-borde);
+  border-radius: 8px;
+  font-family: var(--fuente);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.12s;
+  text-align: left;
+}
+
+.test__opcion:hover {
+  border-color: var(--verde-claro);
+  background: var(--verde-fondo);
+}
+
+.test__opcion--correcta {
+  border-color: var(--verde) !important;
+  background: var(--verde-fondo) !important;
+  font-weight: 600;
+  color: var(--verde-oscuro);
+}
+
+.test__opcion--incorrecta {
+  border-color: var(--rojo) !important;
+  background: #fce4ec !important;
+  font-weight: 600;
+  color: var(--rojo);
+}
+
+.test__opcion--deshabilitada {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.test__feedback {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  animation: aparecer 0.2s ease;
+}
+
+.test__feedback--correcto {
+  background: var(--verde-fondo);
+  color: var(--verde-oscuro);
+  border: 1px solid var(--verde);
+}
+
+.test__feedback--incorrecto {
+  background: #fce4ec;
+  color: var(--rojo);
+  border: 1px solid var(--rojo);
+}
+
+.test__siguiente {
+  width: 100%;
+}
+
+.test__resultado {
+  text-align: center;
+  padding: 30px;
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: 12px;
+}
+
+.test__resultado-nota {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--verde);
+}
+
+.test__resultado-texto {
+  font-size: 16px;
+  color: var(--gris-texto);
+  margin-top: 8px;
+}
+
+/* ===== LABORATORIOS ===== */
+.lab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.lab-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px;
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+
+.lab-card:hover {
+  border-color: var(--verde);
+  box-shadow: var(--sombra);
+}
+
+.lab-card__nombre {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.lab-card__detalle {
+  font-size: 12px;
+  color: var(--gris-texto);
+}
+
+.lab-card__enlace {
+  font-size: 11px;
+  color: var(--verde);
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.lab-card__enlace:hover {
+  text-decoration: underline;
+  color: var(--verde-oscuro);
+}
+
+/* ===== ACERCA DE ===== */
+.acerca {
+  max-width: 500px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.acerca__icono {
+  font-size: 56px;
+  margin-bottom: 12px;
+}
+
+.acerca__titulo {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.acerca__version {
+  font-size: 13px;
+  color: var(--gris-texto);
+  margin-bottom: 16px;
+}
+
+.acerca__texto {
+  font-size: 14px;
+  color: var(--gris-texto);
+  line-height: 1.6;
+}
+
+/* ===== VISTA VACÍA ===== */
+.vacio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.vacio__icono {
+  font-size: 48px;
+  margin-bottom: 12px;
+  opacity: 0.4;
+}
+
+.vacio__texto {
+  font-size: 15px;
+  color: var(--gris-texto);
+}

@@ -1,0 +1,227 @@
+/* ==========================================
+   FARMASTUDY - ESTILOS PRINCIPALES
+   Variables, Reset, Layout General
+   ========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0;
+  vertical-align: middle;
+  line-height: 1;
+  user-select: none;
+}
+
+:root {
+  --verde: #00695c;
+  --verde-oscuro: #004d40;
+  --verde-claro: #00897b;
+  --verde-fondo: #e0f2f1;
+
+  --azul-info: #0277bd;
+  --rojo: #c62828;
+  --ambar: #f57f17;
+  --gris: #f5f5f5;
+  --gris-borde: #e0e0e0;
+  --gris-texto: #616161;
+  --blanco: #ffffff;
+  --texto: #212121;
+
+  --sombra: 0 2px 8px rgba(0,0,0,0.08);
+
+  --fuente: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --tamano: 14px;
+
+  --altura-cabecera: 52px;
+  --ancho-menu: 200px;
+  --altura-barra: 28px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--fuente);
+  font-size: var(--tamano);
+  color: var(--texto);
+  background: var(--gris);
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* ===== CABECERA ===== */
+.cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--altura-cabecera);
+  background: var(--verde);
+  color: var(--blanco);
+  padding: 0 12px;
+  flex-shrink: 0;
+  z-index: 100;
+  gap: 12px;
+}
+
+.cabecera__izquierda {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.cabecera__boton-menu {
+  background: none;
+  border: none;
+  color: var(--blanco);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+}
+
+.cabecera__boton-menu:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.cabecera__logo {
+  font-size: 22px;
+}
+
+.cabecera__titulo {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.cabecera__centro {
+  flex: 1;
+  max-width: 500px;
+}
+
+.buscador-rapido {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 6px;
+  padding: 5px 10px;
+  transition: background 0.15s;
+}
+
+.buscador-rapido:focus-within {
+  background: rgba(255,255,255,0.25);
+}
+
+.buscador-rapido__icono {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.buscador-rapido__input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--blanco);
+  font-family: var(--fuente);
+  font-size: 13px;
+}
+
+.buscador-rapido__input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+.cabecera__derecha {
+  flex-shrink: 0;
+}
+
+.cabecera__contador {
+  font-size: 12px;
+  opacity: 0.85;
+  font-weight: 500;
+}
+
+/* ===== CUERPO ===== */
+.cuerpo {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ===== ÁREA DE TRABAJO ===== */
+.area-trabajo {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px;
+  background: var(--gris);
+}
+
+/* ===== BARRA DE ESTADO ===== */
+.barra-estado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--altura-barra);
+  background: #e8e8e8;
+  border-top: 1px solid var(--gris-borde);
+  padding: 0 12px;
+  flex-shrink: 0;
+}
+
+.barra-estado__texto {
+  font-size: 11px;
+  color: var(--gris-texto);
+}
+
+/* ===== MENÚ COLAPSABLE ===== */
+.menu--cerrado {
+  width: 52px !important;
+  min-width: 52px !important;
+}
+
+.menu--cerrado .menu__etiqueta,
+.menu--cerrado .menu__texto {
+  display: none;
+}
+
+.menu--cerrado .menu__item {
+  justify-content: center;
+  padding: 10px;
+}
+
+/* ===== SCROLL ===== */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c0c0c0; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #a0a0a0; }
+
+/* ===== ANIMACIONES ===== */
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.anim-aparecer {
+  animation: aparecer 0.25s ease;
+}
+
+.anim-fade {
+  animation: fadeIn 0.2s ease;
+}
