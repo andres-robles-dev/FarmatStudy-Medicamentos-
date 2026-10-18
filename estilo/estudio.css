@@ -1,59 +1,134 @@
-/* ==========================================
-   FARMASTUDY - MODO ESTUDIO (FLASHCARDS + TEST)
-   ========================================== */
-
-/* ===== FLASHCARDS ===== */
 .flashcards {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  max-width: 600px;
+  height: 100%;
+  max-width: 700px;
   margin: 0 auto;
-  padding-top: 20px;
 }
 
-.flashcards__controles {
+.flashcards__top {
   display: flex;
-  gap: 8px;
   align-items: center;
+  justify-content: space-between;
+  padding: 8px 4px 0;
+  flex-shrink: 0;
   flex-wrap: wrap;
-  justify-content: center;
+  gap: 8px;
 }
 
 .flashcards__contador {
-  font-size: 13px;
+  font-size: 0.9rem;
   color: var(--gris-texto);
   font-weight: 500;
 }
 
-.flashcards__progreso {
-  width: 100%;
-  height: 4px;
-  background: var(--gris-borde);
-  border-radius: 2px;
-  overflow: hidden;
+.flashcards__top-derecha {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.flashcards__barra {
-  height: 100%;
-  background: var(--verde);
-  border-radius: 2px;
-  transition: width 0.3s;
+.flashcards__modo {
+  font-family: var(--fuente);
+  font-size: 16px;
+  padding: 4px 8px;
+  border: 1px solid var(--gris-borde);
+  border-radius: 4px;
+  background: var(--blanco);
+  cursor: pointer;
+  min-height: var(--toque-min);
 }
 
-/* Tarjeta giratoria */
+.flashcards__reiniciar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--toque-min);
+  height: var(--toque-min);
+  border: 1px solid var(--gris-borde);
+  border-radius: 6px;
+  background: var(--blanco);
+  color: var(--gris-texto);
+  cursor: pointer;
+  transition: all 0.12s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.flashcards__reiniciar:hover {
+  color: var(--verde-oscuro);
+  border-color: var(--verde);
+  background: var(--verde-fondo);
+}
+
+.flashcards__zona {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  gap: 4px;
+  padding: 8px 0;
+}
+
+.flashcards__anterior,
+.flashcards__siguiente {
+  flex: 0 0 var(--toque-min);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background 0.15s;
+  user-select: none;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.flashcards__anterior:hover,
+.flashcards__siguiente:hover {
+  background: var(--gris);
+}
+
+.flashcards__overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  color: var(--gris-texto);
+  opacity: 0;
+  transition: opacity 0.15s, background 0.15s;
+  pointer-events: none;
+}
+.flashcards__anterior:hover .flashcards__overlay,
+.flashcards__siguiente:hover .flashcards__overlay {
+  opacity: 1;
+  background: var(--verde-fondo);
+  color: var(--verde-oscuro);
+  border-color: var(--verde);
+}
+
+.flashcard-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
 .flashcard {
   width: 100%;
-  min-height: 320px;
+  max-width: 480px;
   perspective: 1200px;
   cursor: pointer;
+  height: auto;
 }
 
 .flashcard__interior {
   position: relative;
   width: 100%;
-  height: 320px;
+  min-height: 280px;
   transition: transform 0.6s;
   transform-style: preserve-3d;
 }
@@ -64,34 +139,39 @@
 
 .flashcard__cara {
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   backface-visibility: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 30px;
+  padding: 24px;
   background: var(--blanco);
   border: 1px solid var(--gris-borde);
-  border-radius: 12px;
-  box-shadow: var(--sombra);
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   text-align: center;
+  overflow-y: auto;
 }
 
 .flashcard__cara--atras {
   transform: rotateY(180deg);
   justify-content: flex-start;
-  padding-top: 40px;
-  gap: 12px;
+  padding-top: 32px;
+  gap: 10px;
 }
 
 .flashcard__cara--atras .flashcard__linea {
-  font-size: 15px;
+  font-size: 1rem;
   font-weight: 500;
+  line-height: 1.5;
 }
 
 .flashcard__cara--atras .flashcard__label {
-  font-size: 11px;
+  font-size: 0.8rem;
   color: var(--gris-texto);
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -99,33 +179,95 @@
 }
 
 .flashcard__cara--atras .flashcard__principio {
-  font-size: 18px;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--verde);
 }
 
 .flashcard__pregunta {
-  font-size: 24px;
+  font-size: 1.55rem;
   font-weight: 700;
-  margin-bottom: 12px;
+  line-height: 1.4;
 }
 
 .flashcard__ayuda {
-  font-size: 12px;
+  font-size: 0.85rem;
   color: var(--gris-texto);
+  margin-top: 12px;
 }
 
-.flashcard__girar {
-  font-size: 13px;
-  color: var(--verde);
-  font-weight: 600;
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+.flashcard--desde-derecha {
+  animation: flashcard-entrada-der 0.25s ease;
+}
+.flashcard--desde-izquierda {
+  animation: flashcard-entrada-izq 0.25s ease;
 }
 
-/* ===== TEST ===== */
+@keyframes flashcard-entrada-der {
+  from { opacity: 0.3; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes flashcard-entrada-izq {
+  from { opacity: 0.3; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.flashcards__progreso {
+  width: 100%;
+  height: 4px;
+  background: var(--gris-borde);
+  border-radius: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.flashcards__barra {
+  height: 100%;
+  background: var(--verde);
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+
+@media (max-width: 599px) {
+  .flashcards__anterior,
+  .flashcards__siguiente {
+    flex: 0 0 40px;
+  }
+  .flashcards__overlay {
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+    font-size: 1rem;
+  }
+  .flashcard__interior {
+    min-height: 260px;
+  }
+  .flashcard {
+    max-width: 100%;
+  }
+  .flashcards__modo {
+    font-size: 16px;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .flashcards__overlay {
+    opacity: 0.3;
+  }
+  .flashcards__anterior:hover,
+  .flashcards__siguiente:hover {
+    background: transparent;
+  }
+  .flashcards__anterior:hover .flashcards__overlay,
+  .flashcards__siguiente:hover .flashcards__overlay {
+    opacity: 0.3;
+    background: var(--blanco);
+    color: var(--gris-texto);
+    border-color: var(--gris-borde);
+  }
+}
+
 .test {
   display: flex;
   flex-direction: column;
@@ -140,7 +282,7 @@
   display: flex;
   gap: 16px;
   align-items: center;
-  font-size: 13px;
+  font-size: 0.9rem;
   color: var(--gris-texto);
 }
 
@@ -157,7 +299,7 @@
   border-radius: 12px;
   box-shadow: var(--sombra);
   text-align: center;
-  font-size: 18px;
+  font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.5;
 }
@@ -175,10 +317,13 @@
   border: 2px solid var(--gris-borde);
   border-radius: 8px;
   font-family: var(--fuente);
-  font-size: 14px;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.12s;
   text-align: left;
+  min-height: var(--toque-min);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .test__opcion:hover {
@@ -209,7 +354,7 @@
   width: 100%;
   padding: 12px 16px;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: 500;
   text-align: center;
   animation: aparecer 0.2s ease;
@@ -240,18 +385,17 @@
 }
 
 .test__resultado-nota {
-  font-size: 48px;
+  font-size: 3.4rem;
   font-weight: 800;
   color: var(--verde);
 }
 
 .test__resultado-texto {
-  font-size: 16px;
+  font-size: 1.15rem;
   color: var(--gris-texto);
   margin-top: 8px;
 }
 
-/* ===== LABORATORIOS ===== */
 .lab-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -268,6 +412,8 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.12s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .lab-card:hover {
@@ -277,16 +423,16 @@
 
 .lab-card__nombre {
   font-weight: 600;
-  font-size: 13px;
+  font-size: 0.9rem;
 }
 
 .lab-card__detalle {
-  font-size: 12px;
+  font-size: 0.85rem;
   color: var(--gris-texto);
 }
 
 .lab-card__enlace {
-  font-size: 11px;
+  font-size: 0.8rem;
   color: var(--verde);
   text-decoration: none;
   font-weight: 600;
@@ -298,7 +444,6 @@
   color: var(--verde-oscuro);
 }
 
-/* ===== ACERCA DE ===== */
 .acerca {
   max-width: 500px;
   margin: 40px auto;
@@ -306,29 +451,28 @@
 }
 
 .acerca__icono {
-  font-size: 56px;
+  font-size: 4rem;
   margin-bottom: 12px;
 }
 
 .acerca__titulo {
-  font-size: 24px;
+  font-size: 1.7rem;
   font-weight: 700;
   margin-bottom: 4px;
 }
 
 .acerca__version {
-  font-size: 13px;
+  font-size: 0.9rem;
   color: var(--gris-texto);
   margin-bottom: 16px;
 }
 
 .acerca__texto {
-  font-size: 14px;
+  font-size: 1rem;
   color: var(--gris-texto);
   line-height: 1.6;
 }
 
-/* ===== VISTA VACÍA ===== */
 .vacio {
   display: flex;
   flex-direction: column;
@@ -339,12 +483,12 @@
 }
 
 .vacio__icono {
-  font-size: 48px;
+  font-size: 3.4rem;
   margin-bottom: 12px;
   opacity: 0.4;
 }
 
 .vacio__texto {
-  font-size: 15px;
+  font-size: 1.05rem;
   color: var(--gris-texto);
 }

@@ -1,9 +1,5 @@
-/* ==========================================
-   FARMASTUDY - ESTILOS PRINCIPALES
-   Variables, Reset, Layout General
-   ========================================== */
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('responsive.css');
 
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0;
@@ -35,6 +31,8 @@
   --altura-cabecera: 52px;
   --ancho-menu: 200px;
   --altura-barra: 28px;
+
+  --toque-min: 44px;
 }
 
 * {
@@ -43,13 +41,24 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: var(--tamano);
+}
+
 html, body {
   height: 100%;
   overflow: hidden;
   font-family: var(--fuente);
-  font-size: var(--tamano);
   color: var(--texto);
   background: var(--gris);
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.scroll-lock {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
 }
 
 #app {
@@ -59,18 +68,18 @@ html, body {
   width: 100vw;
 }
 
-/* ===== CABECERA ===== */
 .cabecera {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: var(--altura-cabecera);
-  background: var(--verde);
-  color: var(--blanco);
+  background: #e8e8e8;
+  color: var(--texto);
   padding: 0 12px;
   flex-shrink: 0;
   z-index: 100;
   gap: 12px;
+  border-bottom: 1px solid var(--gris-borde);
 }
 
 .cabecera__izquierda {
@@ -80,66 +89,36 @@ html, body {
   flex-shrink: 0;
 }
 
+.cabecera__centro {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+}
+
 .cabecera__boton-menu {
   background: none;
   border: none;
-  color: var(--blanco);
+  color: var(--texto);
   cursor: pointer;
-  padding: 4px;
+  padding: 11px;
   border-radius: 4px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--toque-min);
+  min-height: var(--toque-min);
 }
 
 .cabecera__boton-menu:hover {
-  background: rgba(255,255,255,0.15);
+  background: rgba(0,0,0,0.06);
 }
 
-.cabecera__logo {
-  font-size: 22px;
-}
-
-.cabecera__titulo {
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-}
-
-.cabecera__centro {
-  flex: 1;
-  max-width: 500px;
-}
-
-.buscador-rapido {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255,255,255,0.15);
-  border-radius: 6px;
-  padding: 5px 10px;
-  transition: background 0.15s;
-}
-
-.buscador-rapido:focus-within {
-  background: rgba(255,255,255,0.25);
-}
-
-.buscador-rapido__icono {
-  font-size: 14px;
-  opacity: 0.8;
-}
-
-.buscador-rapido__input {
-  flex: 1;
-  border: none;
-  outline: none;
-  background: transparent;
-  color: var(--blanco);
-  font-family: var(--fuente);
-  font-size: 13px;
-}
-
-.buscador-rapido__input::placeholder {
-  color: rgba(255,255,255,0.6);
+.cabecera__logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
 }
 
 .cabecera__derecha {
@@ -147,19 +126,17 @@ html, body {
 }
 
 .cabecera__contador {
-  font-size: 12px;
+  font-size: 0.85rem;
   opacity: 0.85;
   font-weight: 500;
 }
 
-/* ===== CUERPO ===== */
 .cuerpo {
   display: flex;
   flex: 1;
   overflow: hidden;
 }
 
-/* ===== ÁREA DE TRABAJO ===== */
 .area-trabajo {
   flex: 1;
   overflow-y: auto;
@@ -168,7 +145,6 @@ html, body {
   background: var(--gris);
 }
 
-/* ===== BARRA DE ESTADO ===== */
 .barra-estado {
   display: flex;
   align-items: center;
@@ -181,11 +157,10 @@ html, body {
 }
 
 .barra-estado__texto {
-  font-size: 11px;
+  font-size: 0.8rem;
   color: var(--gris-texto);
 }
 
-/* ===== MENÚ COLAPSABLE ===== */
 .menu--cerrado {
   width: 52px !important;
   min-width: 52px !important;
@@ -201,13 +176,16 @@ html, body {
   padding: 10px;
 }
 
-/* ===== SCROLL ===== */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #c0c0c0; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #a0a0a0; }
 
-/* ===== ANIMACIONES ===== */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c0c0c0 transparent;
+}
+
 @keyframes aparecer {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }

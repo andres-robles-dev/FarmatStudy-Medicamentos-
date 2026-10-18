@@ -1,8 +1,3 @@
-/* ==========================================
-   FARMASTUDY - COMPONENTES REUTILIZABLES
-   ========================================== */
-
-/* ===== MENÚ LATERAL ===== */
 .menu {
   width: var(--ancho-menu);
   min-width: var(--ancho-menu);
@@ -23,7 +18,7 @@
 .menu__etiqueta {
   display: block;
   padding: 6px 16px;
-  font-size: 9px;
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 1.2px;
   color: rgba(255,255,255,0.35);
@@ -41,10 +36,13 @@
   border-left: 3px solid transparent;
   color: rgba(255,255,255,0.75);
   font-family: var(--fuente);
-  font-size: 12.5px;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.12s;
   text-align: left;
+  min-height: var(--toque-min);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .menu__item:hover {
@@ -60,19 +58,18 @@
 }
 
 .menu__icono {
-  font-size: 16px;
+  font-size: 1.15rem;
   flex-shrink: 0;
   line-height: 1;
 }
 
-/* ===== BOTONES ===== */
 .boton {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   padding: 7px 16px;
   font-family: var(--fuente);
-  font-size: 13px;
+  font-size: 0.9rem;
   font-weight: 600;
   border: 1px solid var(--gris-borde);
   border-radius: 6px;
@@ -81,6 +78,9 @@
   cursor: pointer;
   transition: all 0.12s;
   white-space: nowrap;
+  min-height: var(--toque-min);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .boton:hover {
@@ -100,14 +100,13 @@
 
 .boton--pequeno {
   padding: 4px 10px;
-  font-size: 12px;
+  font-size: 0.85rem;
 }
 
 .boton--icono {
   padding: 5px 8px;
 }
 
-/* ===== TARJETAS ===== */
 .tarjeta {
   background: var(--blanco);
   border: 1px solid var(--gris-borde);
@@ -127,20 +126,19 @@
   padding: 10px 14px;
   border-bottom: 1px solid var(--gris-borde);
   font-weight: 600;
-  font-size: 13px;
+  font-size: 0.9rem;
 }
 
 .tarjeta__cuerpo {
   padding: 14px;
 }
 
-/* ===== BADGES / ETIQUETAS ===== */
 .badge {
   display: inline-flex;
   align-items: center;
   padding: 2px 8px;
   border-radius: 12px;
-  font-size: 11px;
+  font-size: 0.8rem;
   font-weight: 600;
   line-height: 1.4;
 }
@@ -150,8 +148,8 @@
 .badge--rojo { background: #fce4ec; color: #b71c1c; }
 .badge--ambar { background: #fff3e0; color: #e65100; }
 .badge--gris { background: #f0f0f0; color: var(--gris-texto); }
+.badge--morado { background: #f3e5f5; color: #6a1b9a; }
 
-/* ===== BUSCADOR ===== */
 .buscador {
   display: flex;
   align-items: center;
@@ -173,7 +171,7 @@
   border: none;
   outline: none;
   font-family: var(--fuente);
-  font-size: 14px;
+  font-size: 1rem;
   background: transparent;
   color: var(--texto);
 }
@@ -182,11 +180,10 @@
   color: #aaa;
 }
 
-/* ===== TABLA ===== */
 .tabla {
   width: 100%;
   border-collapse: collapse;
-  font-size: 13px;
+  font-size: 0.9rem;
   background: var(--blanco);
   border: 1px solid var(--gris-borde);
   border-radius: 6px;
@@ -197,7 +194,7 @@
   background: #f8f8f8;
   color: var(--gris-texto);
   font-weight: 600;
-  font-size: 11px;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.4px;
   padding: 8px 12px;
@@ -219,7 +216,6 @@
   border-bottom: none;
 }
 
-/* ===== CAMPO FORMULARIO ===== */
 .campo {
   display: flex;
   flex-direction: column;
@@ -227,7 +223,7 @@
 }
 
 .campo__etiqueta {
-  font-size: 11px;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--gris-texto);
   text-transform: uppercase;
@@ -235,11 +231,10 @@
 }
 
 .campo__valor {
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: 500;
 }
 
-/* ===== MODAL NOTIFICACIÓN ===== */
 .notificacion {
   position: fixed;
   bottom: 44px;
@@ -249,19 +244,18 @@
   color: var(--blanco);
   padding: 10px 24px;
   border-radius: 8px;
-  font-size: 13px;
+  font-size: 0.9rem;
   font-weight: 500;
   box-shadow: 0 4px 20px rgba(0,0,0,0.25);
   z-index: 500;
   animation: aparecer 0.2s ease;
 }
 
-/* ===== MIGAS DE PAN ===== */
 .migas {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 12px;
+  font-size: 0.85rem;
   color: var(--gris-texto);
   flex-wrap: wrap;
 }
@@ -288,17 +282,15 @@
 
 .migas__sep {
   color: #bbb;
-  font-size: 10px;
+  font-size: 0.7rem;
 }
 
-/* ===== GRILLA ===== */
 .grilla {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 12px;
 }
 
-/* ===== TRAMO ===== */
 .tramo {
   display: flex;
   gap: 8px;
@@ -306,26 +298,70 @@
 }
 
 .tramo__label {
-  font-size: 12px;
+  font-size: 0.85rem;
   color: var(--gris-texto);
   min-width: 120px;
   font-weight: 500;
 }
 
 .tramo__valor {
-  font-size: 13px;
+  font-size: 0.9rem;
 }
 
-/* ===== SECCIÓN TÍTULO ===== */
 .seccion-titulo {
-  font-size: 18px;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--texto);
   margin-bottom: 4px;
 }
 
 .seccion-subtitulo {
-  font-size: 13px;
+  font-size: 0.9rem;
   color: var(--gris-texto);
   margin-bottom: 16px;
+}
+
+.pantalla-carga {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #e8e8e8;
+  color: var(--texto);
+}
+.pantalla-carga__logo {
+  height: 140px;
+  width: auto;
+  margin-bottom: 8px;
+}
+.pantalla-carga__subtitulo {
+  font-size: 1rem;
+  color: var(--gris-texto);
+  margin: 0;
+}
+.pantalla-carga__barra {
+  width: 200px;
+  height: 3px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 16px;
+}
+.pantalla-carga__barra div {
+  height: 100%;
+  width: 30%;
+  background: var(--verde);
+  border-radius: 4px;
+  animation: carga 1.2s ease-in-out infinite;
+}
+@keyframes carga {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
 }

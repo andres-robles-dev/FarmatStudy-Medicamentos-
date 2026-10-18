@@ -1,4 +1,27 @@
-node_modules/
-dist/
+# ─── Seguridad ───
 .env
+.env.*
+!.env.example
+php/config.local.php
+**/*.private.php
+**/*.bak
+**/*~
+FarmatStudy-private/
+
+# ─── Logs ───
 *.log
+
+# ─── Sistema operativo ───
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Editor / IDE ───
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ─── Temporales ───
+tmp/
+temp/

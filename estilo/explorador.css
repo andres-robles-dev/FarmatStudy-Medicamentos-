@@ -1,7 +1,3 @@
-/* ==========================================
-   FARMASTUDY - EXPLORADOR ATC
-   ========================================== */
-
 .explorador {
   display: flex;
   flex-direction: column;
@@ -17,7 +13,6 @@
   min-height: 0;
 }
 
-/* Árbol ATC */
 .explorador__arbol {
   overflow-y: auto;
   background: var(--blanco);
@@ -34,11 +29,14 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 12px;
-  font-size: 12.5px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
   border-radius: 4px;
   transition: background 0.1s;
   margin: 1px 4px;
+  min-height: var(--toque-min);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .nodo-atc__cabecera:hover {
@@ -54,14 +52,14 @@
 .nodo-atc__toggle {
   width: 16px;
   text-align: center;
-  font-size: 10px;
+  font-size: 0.7rem;
   color: var(--gris-texto);
   flex-shrink: 0;
 }
 
 .nodo-atc__codigo {
   font-family: 'Consolas', monospace;
-  font-size: 11px;
+  font-size: 0.8rem;
   color: var(--gris-texto);
   background: #f0f0f0;
   padding: 0 5px;
@@ -74,7 +72,7 @@
 }
 
 .nodo-atc__contador {
-  font-size: 11px;
+  font-size: 0.8rem;
   color: var(--gris-texto);
   background: #f0f0f0;
   padding: 0 7px;
@@ -90,7 +88,6 @@
   display: block;
 }
 
-/* Lista de medicamentos */
 .explorador__lista {
   display: flex;
   flex-direction: column;
@@ -99,7 +96,7 @@
 }
 
 .explorador__info {
-  font-size: 13px;
+  font-size: 0.9rem;
   color: var(--gris-texto);
   padding: 4px 0;
 }
@@ -109,7 +106,6 @@
   overflow-y: auto;
 }
 
-/* Tarjeta de medicamento en lista */
 .med-card {
   display: flex;
   align-items: center;
@@ -121,6 +117,9 @@
   cursor: pointer;
   transition: all 0.12s;
   animation: aparecer 0.2s ease;
+  min-height: var(--toque-min);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .med-card:hover {
@@ -135,12 +134,12 @@
 
 .med-card__nombre {
   font-weight: 600;
-  font-size: 14px;
+  font-size: 1rem;
   color: var(--texto);
 }
 
 .med-card__detalle {
-  font-size: 12px;
+  font-size: 0.85rem;
   color: var(--gris-texto);
   margin-top: 2px;
   display: flex;
@@ -155,7 +154,6 @@
   align-items: center;
 }
 
-/* ===== FICHA DETALLE ===== */
 .ficha {
   max-width: 700px;
   margin: 0 auto;
@@ -169,7 +167,6 @@
 }
 
 .ficha__icono {
-  font-size: 36px;
   width: 56px;
   height: 56px;
   display: flex;
@@ -178,6 +175,7 @@
   background: var(--verde-fondo);
   border-radius: 12px;
   flex-shrink: 0;
+  font-size: 2.55rem;
 }
 
 .ficha__titulos {
@@ -185,12 +183,12 @@
 }
 
 .ficha__nombre {
-  font-size: 22px;
+  font-size: 1.55rem;
   font-weight: 700;
 }
 
 .ficha__principio {
-  font-size: 15px;
+  font-size: 1.05rem;
   color: var(--gris-texto);
   margin-top: 2px;
 }
@@ -220,7 +218,7 @@
 }
 
 .ficha__campo-etiqueta {
-  font-size: 10px;
+  font-size: 0.7rem;
   font-weight: 700;
   color: var(--gris-texto);
   text-transform: uppercase;
@@ -229,7 +227,7 @@
 }
 
 .ficha__campo-valor {
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: 500;
 }
 
@@ -244,7 +242,7 @@
   padding: 4px 10px;
   background: var(--verde-fondo);
   border-radius: 6px;
-  font-size: 12px;
+  font-size: 0.85rem;
   font-weight: 500;
   color: var(--verde-oscuro);
 }
@@ -264,7 +262,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 0.85rem;
   color: var(--gris-texto);
 }
 
@@ -275,4 +273,10 @@
 .ficha__atc-nivel .badge {
   min-width: 50px;
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .explorador__panel {
+    grid-template-columns: 1fr;
+  }
 }
